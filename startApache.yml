@@ -1,4 +1,8 @@
 ---
+- name: Hello World!
+hosts: all
+ 
+tasks:
 - name: Start the Apache Service
   command: ./startApache.sh chdir={{apache_home_folder}}
   ignore_errors: True
