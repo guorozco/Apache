@@ -1,19 +1,10 @@
 ---
 - name: Hello World!
   hosts: all
- 
+apache_home_folder: /opt/apps/apache
+
 tasks:
 
 - name: Start the Apache Service
   command: ./startApache.sh chdir={{apache_home_folder}}
   ignore_errors: True
-
-- name: Playbook Successful information below
-
-  debug:
-    msg="PLAYBOOK SUCCESSFUL ON" '{{inventory_hostname}}'
-
-- name: Copy ansible.log with correct date
-  connection: local
-  command: mv /opt/apps/logs/ansible/ansible.log /opt/apps/logs/ansible/ansible.{{ lookup('pipe', 'date +%Y-%m-%d:%H:%M:%S') }}.log
-  run_once: true
